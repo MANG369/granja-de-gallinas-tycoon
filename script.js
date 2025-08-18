@@ -20,7 +20,7 @@ const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
 // 3. Inicializar TON Connect
-// DEBES REEMPLAZAR LA URL con el enlace PÚBLICO a tu archivo tonconnect-manifest.json
+// ¡MUY IMPORTANTE! DEBES REEMPLAZAR ESTA URL con el enlace PÚBLICO a tu archivo tonconnect-manifest.json
 const tonConnectUI = new TON_CONNECT_SDK.TonConnectUI({
     manifestUrl: 'https://URL-PUBLICA-DE-TU-MANIFIESTO/tonconnect-manifest.json',
 });
@@ -55,7 +55,9 @@ const offlineHuevosEl = document.getElementById('offline-huevos');
 tonConnectUI.onStatusChange(wallet => {
     if (wallet) {
         const address = wallet.account.address;
+        // La librería TON Connect puede convertir la dirección a un formato más legible
         const userFriendlyAddress = TON_CONNECT_SDK.toUserFriendlyAddress(address);
+        // Mostramos solo el inicio y el final de la dirección
         walletAddressEl.innerText = `${userFriendlyAddress.slice(0, 4)}...${userFriendlyAddress.slice(-4)}`;
         connectWalletBtn.innerText = "Desconectar";
     } else {
