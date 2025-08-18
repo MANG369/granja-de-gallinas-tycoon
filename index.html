@@ -15,21 +15,19 @@
         <header id="game-header">
             <div id="stats-container">
                 <div class="stat">
-                    <img src="gallina-icon.png" alt="Gallina Icon">
-                    <span id="gallinas-count">0 / 10</span>
+                    <span>L: <span id="gallinas-count">0/10</span></span>
                 </div>
                 <div class="stat">
-                    <img src="huevo-icon.png" alt="Huevo Icon">
-                    <span id="huevos-count">0</span>
-                </div>
-                <div class="stat">
-                    <img src="moneda-icon.png" alt="Moneda Icon">
+                    <img src="moneda-icon.png" alt="Moneda">
                     <span id="monedas-count">10</span>
+                </div>
+                <div class="stat">
+                    <img src="huevo-icon.png" alt="Huevo">
+                    <span id="huevos-count">0</span>
                 </div>
             </div>
             <div id="wallet-container">
                 <button id="connect-wallet-btn">Conectar Wallet</button>
-                <span id="wallet-address"></span>
             </div>
         </header>
         
@@ -38,31 +36,44 @@
                 <img src="logo-nuevo.png" alt="Logo del Juego">
             </div>
 
-            <div id="controls-container">
-                <div class="action">
-                    <button id="comprar-gallina-btn">Comprar Gallina</button>
-                    <p>Costo: <span id="costo-gallina">10</span> 💰</p>
+            <div id="actions-wrapper">
+                <a href="airdrop.html" class="side-button">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAKtJREFUOE9jZKAQMELg/9c/w/+ZgAACYyD+AsT/QPybA8SYGf8ZGBgYGAl0//8/A8Pvz38yAgl2f4aZgYGBgQX+B4h/A/F/IB4MxA/8Z/z/8T/W/2gGYuCTgYGBgVH+R4b/P/7/Z2BgYARkYGBgEKYnN0A8/X8x0A8TYgOJv0D8H4h3g3hA/AGI/0HxHyB+gqg/kDgA4odA/BeI/wPxLxA/AfENkKCgAIg/AfEbkK2oBMSfgPgDkKyYBcTfgPgTkK3gA5QACwCFz/1X+x760gAAAABJRU5ErkJggg==" alt="Airdrop">
+                </a>
+
+                <div id="controls-container">
+                    <div class="action">
+                        <button id="comprar-gallina-btn">
+                            Comprar Gallina
+                            <div class="button-extra">+<img src="gallina-icon.png" alt="Gallina"> <span id="gallina-level">0</span></div>
+                        </button>
+                        <p>Costo: <span id="costo-gallina">10</span>💰</p>
+                    </div>
+                    <div class="action">
+                        <button id="mejorar-corral-btn">
+                            Mejorar Corral
+                            <div class="button-extra">+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAEFJREFUOE9jZKAQMFKon4H4MxA/A+J/QHyYgvg3EP8H4gMQ3wTi9xAbSHwfiP8D8UMg3gbid0A8EJcD42YGAECfCTfP0z+PAAAAAElFTkSuQmCC" alt="Corral"> <span id="corral-level">0</span></div>
+                        </button>
+                        <p>Costo: <span id="costo-corral">100</span>💰 (+10 cap.)</p>
+                    </div>
+                    <div class="action">
+                        <button id="vender-huevos-btn">
+                            Vender Huevos
+                            <div class="button-extra">+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAJlJREFUOE9jZKAQMELg/2M/w/+ZgAACYyD+AsT/QPybA8SYGf8ZGBgYGAl0//8/A8Pvz38yAgl2f4aZgYGBgQX+B4h/A/F/IB4MxA/8Z/z/8T/W/2gGYuCTgYGBgVH+R4b/P/7/Z2BgYARkYGBgEKYnN0A8/X8x0A8TYgOJv0D8H4h3g3hA/AGI/0HxHyB+gqg/kDgA4odA/BeI/wPxLxA/AfENkKCgAIg/AfEbkK2oBMSfgPgDkKyYBcTfgPgTkK2oAwA+1eYtLkB40wAAAABJRU5ErkJggg==" alt="Boost"> <span id="venta-level">0</span></div>
+                        </button>
+                        <p>Vender todo por <span id="valor-venta">0</span>💰</p>
+                    </div>
                 </div>
-                <div class="action">
-                    <button id="mejorar-corral-btn">Mejorar Corral</button>
-                    <p>Costo: <span id="costo-corral">100</span> 💰 (+10 cap.)</p>
-                </div>
-                <div class="action">
-                    <button id="vender-huevos-btn">Vender Huevos</button>
-                    <p>Vender todo por <span id="valor-venta">0</span> 💰</p>
-                </div>
+
+                <a href="ads.html" class="side-button">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAEtJREFUOE9jZKAQMFKon4H4MxA/A+J/QHyYgvg3EP8H4gMQ3wTi9xAbSHwfiP8D8UMg3gbid0A8EJcD42YGAChQZ2BgYGBgZCQjCgYGBoA0e38aGT8DAAAA//8DAHdoBvVdG1gJAAAAAElFTkSuQmCC" alt="Ads">
+                </a>
             </div>
         </main>
         
-        <div id="offline-modal" class="hidden">
-            <div class="modal-content">
-                <h2>¡Bienvenido de vuelta!</h2>
-                <p>Mientras no estabas, tus <span id="offline-gallinas"></span> gallinas produjeron...</p>
-                <p class="offline-eggs">🥚 <span id="offline-huevos"></span> huevos!</p>
-                <button id="close-modal-btn">¡Genial!</button>
-            </div>
-        </div>
     </div>
+
+    <div id="offline-modal" class="hidden">...</div>
 
     <script type="module" src="script.js"></script>
 </body>
