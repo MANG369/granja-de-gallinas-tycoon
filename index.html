@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Granja de Gallinas Tycoon</title>
+    <link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAARNJREFUOE9jZGBg+M+AB/9/Bv2//xkBc3AyA7Ccs5D1/w/vP8Y/sL//MDw5+c9I4P9/JjAy//8/A8Pvz38yAgl2f4aZgYGBgQWygYn5j4Hh+48/DAy/+P8ZWP3zL0Pa93/GfzIy/v/PMPz48S+DBLq/Y4A3AAsZgQl2fuPI4d1nhp8//zMwOPjjP2Ng4P9/BiYWP36F1BsZGL5/+MvAwOjPvzMwMPj331/GFj5/AsrNAAUsYBmY2P/7L8PzH38ZGFh98x8DGf//M8L9n2Fk+fMvA5M3fhksYAHLaH5Ghp8//zL8/OmbAYs3f8fo8v8/DHy+BwL+g4gLBAAyBgYGBgB3i7g2fP/29AAAAABJRU5ErkJggg==" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.comcom/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="game-container">
+        <header>
+            <h1>Granja de Gallinas Tycoon</h1>
+        </header>
+        
+        <main>
+            <div id="stats-container">
+                <div class="stat">
+                    <span class="stat-label">🐔 Gallinas:</span>
+                    <span id="gallinas-count">0 / 10</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">🥚 Huevos:</span>
+                    <span id="huevos-count">0</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">💰 Monedas:</span>
+                    <span id="monedas-count">10</span>
+                </div>
+            </div>
+
+            <div id="corral">
+                </div>
+
+            <div id="controls-container">
+                <div class="action">
+                    <button id="comprar-gallina-btn">Comprar Gallina</button>
+                    <p>Costo: <span id="costo-gallina">10</span> 💰</p>
+                </div>
+                <div class="action">
+                    <button id="mejorar-corral-btn">Mejorar Corral</button>
+                    <p>Costo: <span id="costo-corral">100</span> 💰 (+10 cap.)</p>
+                </div>
+                <div class="action">
+                    <button id="vender-huevos-btn">Vender Huevos</button>
+                    <p>Vender todo por <span id="valor-venta">0</span> 💰</p>
+                </div>
+            </div>
+        </main>
+        
+        <div id="offline-modal" class="hidden">
+            <div class="modal-content">
+                <h2>¡Bienvenido de vuelta!</h2>
+                <p>Mientras no estabas, tus <span id="offline-gallinas"></span> gallinas produjeron...</p>
+                <p class="offline-eggs">🥚 <span id="offline-huevos"></span> huevos!</p>
+                <button id="close-modal-btn">¡Genial!</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>
