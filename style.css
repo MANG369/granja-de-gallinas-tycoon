@@ -79,16 +79,15 @@ body {
 
 #logo-container {
     margin: 15px 0;
-    /* Quitamos el borde del contenedor para que el logo PNG se vea mejor */
     border: none; 
-    background-color: transparent; /* Fondo transparente */
+    background-color: transparent;
 }
 
 #logo-container img {
     width: 100%;
-    max-width: 250px; /* Ajustamos el tamaño máximo para que no sea tan grande */
+    max-width: 250px;
     display: block;
-    margin: 0 auto; /* Centramos el logo */
+    margin: 0 auto;
 }
 
 #controls-container {
@@ -118,7 +117,7 @@ button {
     color: var(--color-boton-texto);
     box-shadow: 0 4px 0 var(--color-boton-borde);
     transition: all 0.1s ease;
-    width: 250px; /* Ancho fijo para botones */
+    width: 250px;
 }
 
 button:active {
