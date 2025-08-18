@@ -3,40 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Granja de Gallinas Tycoon</title>
-    <link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAARNJREFUOE9jZGBg+M+AB/9/Bv2//xkBc3AyA7Ccs5D1/w/vP8Y/sL//MDw5+c9I4P9/JjAy//8/A8Pvz38yAgl2f4aZgYGBgQWygYn5j4Hh+48/DAy/+P8ZWP3zL0Pa93/GfzIy/v/PMPz48S+DBLq/Y4A3AAsZgQl2fuPI4d1nhp8//zMwOPjjP2Ng4P9/BiYWP36F1BsZGL5/+MvAwOjPvzMwMPj331/GFj5/AsrNAAUsYBmY2P/7L8PzH38ZGFh98x8DGf//M8L9n2Fk+fMvA5M3fhksYAHLaH5Ghp8//zL8/OmbAYs3f8fo8v8/DHy+BwL+g4gLBAAyBgYGBgB3i7g2fP/29AAAAABJRU5ErkJggg==" type="image/x-icon">
+    <title>Granja Tycoon</title>
+    <script src="https://unpkg.com/@tonconnect/sdk@latest/dist/tonconnect-sdk.min.js"></script>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.comcom/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="icon" href="https://i.imgur.com/vL6b0b2.png" type="image/x-icon">
 </head>
 <body>
     <div id="game-container">
-        <header>
-            <h1>Granja de Gallinas Tycoon</h1>
-        </header>
         
-        <main>
+        <header id="game-header">
             <div id="stats-container">
                 <div class="stat">
-                    <span class="stat-label">🐔 Gallinas:</span>
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAGFJREFUOE9jZKAQMFKon4F4IxD/A+LU5z8MDAwMjAwMDAz/gZgDiKkYjIz/DAwuwFx6gPg/ED8D4tTnHyB+BcQXA/F/bCDUD2IZgZgZiB8A8V8gfgvE7yA2ENsPlBAAvyEAAAAASUVORK5CYII=" alt="Gallina">
                     <span id="gallinas-count">0 / 10</span>
                 </div>
                 <div class="stat">
-                    <span class="stat-label">🥚 Huevos:</span>
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAARNJREFUOE9jZGBg+M+AB/9/Bv2//xkBc3AyA7Ccs5D1/w/vP8Y/sL//MDw5+c9I4P9/JjAy//8/A8Pvz38yAgl2f4aZgYGBgQWygYn5j4Hh+48/DAy/+P8ZWP3zL0Pa93/GfzIy/v/PMPz48S+DBLq/Y4A3AAsZgQl2fuPI4d1nhp8//zMwOPjjP2Ng4P9/BiYWP36F1BsZGL5/+MvAwOjPvzMwMPj331/GFj5/AsrNAAUsYBmY2P/7L8PzH38ZGFh98x8DGf//M8L9n2Fk+fMvA5M3fhksYAHLaH5Ghp8//zL8/OmbAYs3f8fo8v8/DHy+BwL+g4gLBAAyBgYGBgB3i7g2fP/29AAAAABJRU5ErkJggg==" alt="Huevo">
                     <span id="huevos-count">0</span>
                 </div>
                 <div class="stat">
-                    <span class="stat-label">💰 Monedas:</span>
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAANVJREFUOE/N0ksog0AYBOCvdwYKgoKK0YUoCFZ2YAd2YBc22AULK4iTo/e/Zy8DScp3/j3fT3rSRtJ+dwb8QYOohV4Yy9hGBdGIbLwglpGN4WwA+B4L4jL8r7M4Gz7jLEaHjbEbl3iU8Ykj/sYwFvO8YJzHGCdZxkuc4wyXOKT/8QZP+IwJjnGEy2zjyZ6xhMvM4wXneMIlXsYZLrOEE/zEBV7xggvM4wVf8IF3nOAFf/HBNz7xgZ/55Dk/5gOf8z6H/8YDH/M+BwYBv/ABjwGf0cADAAAAAElFTkSuQmCC" alt="Moneda">
                     <span id="monedas-count">10</span>
                 </div>
             </div>
-
-            <div id="corral">
-                </div>
+            <div id="wallet-container">
+                <button id="connect-wallet-btn">Conectar Wallet</button>
+                <span id="wallet-address"></span>
+            </div>
+        </header>
+        
+        <main>
+            <div id="logo-container">
+                <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAE2ATYDAREAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAQACBP/EACgQAQACAQIGAgMBAQEAAAAAAAABEfAhIUEwMVFhcYGRobHB0eHxIv/EABQBAQAAAAAAAAAAAAAAAAAAAAD/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwD2gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" alt="Logo del Juego">
+            </div>
 
             <div id="controls-container">
                 <div class="action">
                     <button id="comprar-gallina-btn">Comprar Gallina</button>
-                    <p>Costo: <span id="costo-gallina">10</span> 💰</p>
+                    <p>Costo: <span id="costo-gallina">15</span> 💰</p>
                 </div>
                 <div class="action">
                     <button id="mejorar-corral-btn">Mejorar Corral</button>
