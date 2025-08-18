@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Granja de Gallinas Tycoon</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="game-container">
+        <h1>Granja de Gallinas Tycoon</h1>
+        
+        <div id="stats-container">
+            <div class="stat">
+                <span class="stat-label">🐔 Gallinas:</span>
+                <span id="gallinas-count">0 / 10</span>
+            </div>
+            <div class="stat">
+                <span class="stat-label">🥚 Huevos:</span>
+                <span id="huevos-count">0</span>
+            </div>
+            <div class="stat">
+                <span class="stat-label">💰 Monedas:</span>
+                <span id="monedas-count">10</span>
+            </div>
+        </div>
+
+        <div id="corral">
+            </div>
+
+        <div id="controls-container">
+            <div class="action">
+                <button id="comprar-gallina-btn">Comprar Gallina</button>
+                <p>Costo: <span id="costo-gallina">10</span> 💰</p>
+            </div>
+            <div class="action">
+                <button id="mejorar-corral-btn">Mejorar Corral</button>
+                <p>Costo: <span id="costo-corral">100</span> 💰 (+10 cap.)</p>
+            </div>
+            <div class="action">
+                <button id="vender-huevos-btn">Vender Huevos</button>
+                <p>Vender todo por <span id="valor-venta">0</span> 💰</p>
+            </div>
+        </div>
+        
+        <div id="offline-modal" class="hidden">
+            <div class="modal-content">
+                <h2>¡Bienvenido de vuelta!</h2>
+                <p>Mientras no estabas, tus <span id="offline-gallinas"></span> gallinas produjeron...</p>
+                <p class="offline-eggs">🥚 <span id="offline-huevos"></span> huevos!</p>
+                <button id="close-modal-btn">¡Genial!</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>
