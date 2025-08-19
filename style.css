@@ -1,20 +1,23 @@
+/* --- VARIABLES DE TEMA --- */
 :root {
     --color-fondo: #87CEEB;
     --color-container: #F5F5F5;
-    --color-borde-oscuro: #B0B0B0;
-    --color-interior-container: #FFFFFF;
+    --color-borde: #B0B0B0;
+    --color-sombra-container: #999;
+    --color-interior: #FFFFFF;
     --color-texto-principal: #333333;
-    --color-texto-resaltado: #FFD700;
-    --color-texto-sombra: rgba(0, 0, 0, 0.2);
-    --color-boton: #FFD700;
-    --color-boton-borde: #DAA520;
-    --color-boton-texto: #333;
-    --color-boton-desactivado: #BDBDBD;
+    --color-texto-secundario: #666;
+    --color-texto-sombra: rgba(0, 0, 0, 0.15);
+    --color-acento: #FFD700;
+    --color-acento-sombra: #DAA520;
+    --color-wallet: #007BFF;
+    --font-principal: 'Press Start 2P', cursive;
 }
 
+/* --- ESTILO BASE --- */
 body {
     background-color: var(--color-fondo);
-    font-family: 'Press Start 2P', cursive;
+    font-family: var(--font-principal);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -27,27 +30,29 @@ body {
     width: 420px;
     max-width: 95%;
     background-color: var(--color-container);
-    border: 5px solid var(--color-borde-oscuro);
+    border: 4px solid var(--color-borde);
     border-radius: 10px;
-    padding: 10px;
-    box-shadow: 0 8px 0 var(--color-borde-oscuro);
+    padding: 12px;
+    box-shadow: 0 8px 0 var(--color-sombra-container);
     text-align: center;
+    animation: fadeIn 0.5s ease-in-out;
 }
 
+/* --- CABECERA Y ESTADÍSTICAS --- */
 #game-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: var(--color-interior-container);
+    background-color: var(--color-interior);
     padding: 8px;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    border: 2px solid var(--color-borde-oscuro);
+    border-radius: 6px;
+    margin-bottom: 12px;
+    border: 2px solid var(--color-borde);
 }
 
 #stats-container {
     display: flex;
-    gap: 15px;
+    gap: 12px;
     align-items: center;
 }
 
@@ -60,75 +65,89 @@ body {
 .stat img {
     width: 16px;
     height: 16px;
-    margin-right: 5px;
+    margin-right: 6px;
     image-rendering: pixelated;
 }
 
+#monedas-count {
+    animation: pulse 2s infinite;
+}
+
+/* --- LOGO Y ÁREA DE ACCIONES --- */
 #logo-container img {
     width: 100%;
     max-width: 200px;
     display: block;
-    margin: 0 auto;
+    margin: 10px auto;
 }
 
-#actions-wrapper {
+#main-actions-area {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 10px;
     margin-top: 15px;
 }
 
-.side-button {
-    background-color: var(--color-interior-container);
-    border: 2px solid var(--color-borde-oscuro);
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-}
-
-.side-button img {
-    width: 24px;
-    height: 24px;
-    image-rendering: pixelated;
-}
-
 #controls-container {
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 12px;
+    background: var(--color-interior);
+    padding: 15px 10px;
+    border-radius: 5px;
+    border: 2px solid var(--color-borde);
+}
+
+/* --- BOTONES --- */
+button {
+    font-family: var(--font-principal);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.1s ease;
+    font-size: 11px;
+}
+
+.action button {
+    background-color: var(--color-acento);
+    border: 2px solid var(--color-acento-sombra);
+    padding: 10px;
+    color: var(--color-texto-principal);
+    box-shadow: 0 4px 0 var(--color-acento-sombra);
     width: 100%;
-    max-width: 250px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.action button:hover:not(:disabled) {
+    background-color: #FFEC8B; /* Amarillo más claro */
+}
+
+.action button:active:not(:disabled) {
+    transform: translateY(3px);
+    box-shadow: 0 1px 0 var(--color-acento-sombra);
+}
+
+.action button:disabled {
+    background-color: #BDBDBD;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: 0 4px 0 #9E9E9E;
+    color: #757575;
 }
 
 .action p {
     margin: 4px 0 0 0;
-    font-size: 12px;
-}
-
-button {
-    font-family: 'Press Start 2P', cursive;
-    background-color: var(--color-boton);
-    border: 2px solid var(--color-boton-borde);
-    border-radius: 4px;
-    padding: 8px 10px;
-    cursor: pointer;
-    color: var(--color-boton-texto);
-    box-shadow: 0 4px 0 var(--color-boton-borde);
-    width: 100%;
-    font-size: 12px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    font-size: 11px;
+    color: var(--color-texto-secundario);
 }
 
 .button-extra {
     display: flex;
     align-items: center;
-    background: rgba(0,0,0,0.1);
+    background: rgba(0,0,0,0.08);
     padding: 2px 5px;
     border-radius: 3px;
 }
@@ -139,4 +158,73 @@ button {
     image-rendering: pixelated;
 }
 
-/* ... (otros estilos como :active, :disabled, modal, etc., se mantienen igual) ... */
+.side-button {
+    background-color: #fff;
+    border: 2px solid var(--color-borde);
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+}
+.side-button:hover {
+    transform: scale(1.1);
+}
+.side-button img {
+    width: 28px;
+    height: 28px;
+    image-rendering: pixelated;
+}
+
+#wallet-container button {
+    padding: 6px 8px;
+    font-size: 10px;
+    background-color: #e0e0e0;
+    border: 2px solid #a0a0a0;
+    box-shadow: 0 2px 0 #a0a0a0;
+}
+#wallet-container button:active {
+    transform: translateY(1px);
+    box-shadow: 0 1px 0 #a0a0a0;
+}
+#wallet-address {
+    font-size: 10px;
+    color: var(--color-wallet);
+    margin-left: 8px;
+    font-weight: bold;
+}
+
+/* --- MODAL Y ANIMACIONES --- */
+.hidden { display: none; }
+
+#offline-modal { /* ... Estilo del modal se mantiene ... */ }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); color: #FFDF00; }
+    100% { transform: scale(1); }
+}
+
+/* --- RESPONSIVIDAD --- */
+@media (max-width: 480px) {
+    body {
+        align-items: flex-start;
+        padding-top: 10px;
+    }
+    #game-header, #stats-container {
+        flex-direction: column;
+        gap: 8px;
+    }
+    #wallet-container {
+        margin-top: 5px;
+    }
+}
