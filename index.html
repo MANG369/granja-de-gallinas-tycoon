@@ -4,94 +4,65 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Granja Tycoon</title>
-    
     <script src="https://unpkg.com/@tonconnect/sdk@latest/dist/tonconnect-sdk.min.js"></script>
-    
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    
     <link rel="icon" href="huevo-icon.png" type="image/png">
 </head>
 <body>
-
     <div id="game-container">
         <div id="notification-container"></div>
         
         <header id="game-header">
-            <div id="stats-container" aria-label="Estadísticas del jugador">
-                <div class="stat" aria-label="Límite de gallinas">
-                    <span>L: <span id="gallinas-capacity-display">0/10</span></span>
+            <div id="stats-container">
+                <div class="stat">
+                    <span>L: <span id="player-level-display">1</span></span>
                 </div>
-                <div class="stat" aria-label="Total de monedas">
+                <div class="stat">
                     <img src="moneda-icon.png" alt="Moneda">
                     <span id="monedas-count">10</span>
                 </div>
-                <div class="stat" aria-label="Total de huevos">
+                <div class="stat">
                     <img src="huevo-icon.png" alt="Huevo">
                     <span id="huevos-count">0</span>
                 </div>
             </div>
             <div id="wallet-container">
-                <button id="connect-wallet-btn" aria-label="Conectar o desconectar wallet de TON">Conectar Wallet</button>
-                <span id="wallet-address"></span>
+                <button id="connect-wallet-btn">Conectar Wallet</button>
             </div>
         </header>
         
         <main>
-            <div id="logo-container">
-                <img src="logo-nuevo.png" alt="Logo de Granja Tycoon">
+            <div id="info-and-logo">
+                <div class="info-box">
+                    <span class="info-box-title">Valor/Huevo</span>
+                    <span id="egg-value-display">1💰</span>
+                </div>
+                <div id="logo-container">
+                    <img src="logo-nuevo.png" alt="Logo de Granja Tycoon">
+                </div>
+                <div class="info-box">
+                    <span class="info-box-title">Prod./10s</span>
+                    <span id="production-rate-display">0🥚</span>
+                </div>
             </div>
 
-            <div id="main-actions-area">
-                <a href="airdrop.html" class="side-button" aria-label="Ir a la página de Airdrop">
-                    <img src="https://raw.githubusercontent.com/MANG369/granja-de-gallinas-tycoon/refs/heads/main/airdrop.png" alt="Airdrop">
-                </a>
-
-                <div id="controls-container">
-                    <div class="action">
-                        <button id="comprar-gallina-btn" aria-label="Comprar una gallina">
-                            Comprar Gallina
-                            <div class="button-extra">+<img src="gallina-icon.png" alt="Gallina"> <span id="gallinas-total-display">0</span></div>
-                        </button>
-                        <p>Costo: <span id="costo-gallina">10</span>💰</p>
-                    </div>
-                    <div class="action">
-                        <button id="mejorar-huevo-btn" aria-label="Aumentar el valor de los huevos">
-                            Mejorar Huevo
-                            <div class="button-extra">+<img src="huevo-icon.png" alt="Huevo"> <span id="huevo-level-display">0</span></div>
-                        </button>
-                        <p>Costo: <span id="costo-mejora-huevo">250</span>💰 (+1💰/huevo)</p>
-                    </div>
-                    <div class="action">
-                        <button id="mejorar-corral-btn" aria-label="Mejorar capacidad del corral">
-                            Mejorar Corral
-                            <div class="button-extra">+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAEFJREFUOE9jZKAQMFKon4H4MxA/A+J/QHyYgvg3EP8H4gMQ3wTi9xAbSHwfiP8D8UMg3gbid0A8EJcD42YGAECfCTfP0z+PAAAAAElFTkSuQmCC" alt="Corral"> <span id="corral-upgrades-display">0</span></div>
-                        </button>
-                        <p>Costo: <span id="costo-corral">100</span>💰 (+10 cap.)</p>
-                    </div>
-                    <div class="action">
-                        <button id="vender-huevos-btn" aria-label="Vender todos los huevos acumulados">
-                            Vender Huevos
-                            <div class="button-extra">+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAJlJREFUOE9jZKAQMELg/2M/w/+ZgAACYyD+AsT/QPybA8SYGf8ZGBgYGAl0//8/A8Pvz38yAgl2f4aZgYGBgQX+B4h/A/F/IB4MxA/8Z/z/8T/W/2gGYuCTgYGBgVH+R4b/P/7/Z2BgYARkYGBgEKYnN0A8/X8x0A8TYgOJv0D8H4h3g3hA/AGI/0HxHyB+gqg/kDgA4odA/BeI/wPxLxA/AfENkKCgAIg/AfEbkK2oBMSfgPgDkKyYBcTfgPgTkK2oAwA+1eYtLkB40wAAAABJRU5ErkJggg==" alt="Boost"> <span id="ventas-count-display">0</span></div>
-                        </button>
-                        <p>Vender todo por <span id="valor-venta">0</span>💰</p>
-                    </div>
+            <div id="controls-container">
                 </div>
 
-                <a href="ads.html" class="side-button" aria-label="Ir a la página de Anuncios">
-                    <img src="https://raw.githubusercontent.com/MANG369/granja-de-gallinas-tycoon/refs/heads/main/ads.png" alt="Ads">
+            <div id="secondary-actions-container">
+                <a href="airdrop.html" class="secondary-button">
+                    <img src="https://raw.githubusercontent.com/MANG369/granja-de-gallinas-tycoon/main/airdrop.png" alt="Airdrop">
+                    <span>Airdrop</span>
+                </a>
+                <a href="ads.html" class="secondary-button">
+                    <img src="https://raw.githubusercontent.com/MANG369/granja-de-gallinas-tycoon/main/ads.png" alt="Ads">
+                    <span>Ads</span>
                 </a>
             </div>
         </main>
         
-        <div id="offline-modal" class="hidden">
-            <div class="modal-content">
-                <h2>¡Bienvenido de vuelta!</h2>
-                <p>Mientras no estabas, tus <span id="offline-gallinas"></span> gallinas produjeron...</p>
-                <p class="offline-eggs">🥚 <span id="offline-huevos"></span> huevos!</p>
-                <button id="close-modal-btn">¡Genial!</button>
-            </div>
-        </div>
+        <div id="offline-modal" class="hidden"> </div>
     </div>
 
     <script type="module" src="script.js"></script>
