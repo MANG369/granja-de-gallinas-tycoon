@@ -36,6 +36,8 @@ body {
     box-shadow: 0 8px 0 var(--color-sombra-container);
     text-align: center;
     animation: fadeIn 0.5s ease-in-out;
+    position: relative; /* Para el posicionamiento de notificaciones */
+    overflow: hidden;
 }
 
 /* --- CABECERA Y ESTADÍSTICAS --- */
@@ -70,7 +72,7 @@ body {
 }
 
 #monedas-count {
-    animation: pulse 2s infinite;
+    animation: pulse 2.5s infinite ease-in-out;
 }
 
 /* --- LOGO Y ÁREA DE ACCIONES --- */
@@ -93,7 +95,7 @@ body {
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 8px;
     background: var(--color-interior);
     padding: 15px 10px;
     border-radius: 5px;
@@ -123,11 +125,13 @@ button {
 
 .action button:hover:not(:disabled) {
     background-color: #FFEC8B; /* Amarillo más claro */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 var(--color-acento-sombra);
 }
 
 .action button:active:not(:disabled) {
-    transform: translateY(3px);
-    box-shadow: 0 1px 0 var(--color-acento-sombra);
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 var(--color-acento-sombra);
 }
 
 .action button:disabled {
@@ -169,10 +173,11 @@ button {
     align-items: center;
     cursor: pointer;
     flex-shrink: 0;
-    transition: transform 0.2s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 .side-button:hover {
     transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 .side-button img {
     width: 28px;
@@ -199,32 +204,51 @@ button {
 }
 
 /* --- MODAL Y ANIMACIONES --- */
-.hidden { display: none; }
+.hidden { display: none !important; }
 
-#offline-modal { /* ... Estilo del modal se mantiene ... */ }
+#offline-modal {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); display: flex;
+    justify-content: center; align-items: center; z-index: 100;
+}
+
+.modal-content {
+    background-color: var(--color-container); padding: 25px;
+    border: 5px solid var(--color-borde); border-radius: 10px; text-align: center;
+}
+.offline-eggs { font-size: 24px; color: var(--color-acento); margin: 15px 0; }
+
+#notification-container {
+    position: absolute; top: 15px; left: 50%; transform: translateX(-50%);
+    z-index: 200; display: flex; flex-direction: column; gap: 10px;
+}
+.notification {
+    padding: 12px 20px; font-family: var(--font-principal); font-size: 12px;
+    color: #fff; background-color: #2E7D32; border: 3px solid #fff;
+    border-radius: 8px; box-shadow: 0 4px 0 rgba(0,0,0,0.2);
+    animation: slideInDown 0.5s ease-out forwards, fadeOut 0.5s ease-in-out 4.5s forwards;
+}
+.notification.error { background-color: #C62828; }
 
 @keyframes fadeIn {
     from { opacity: 0; transform: scale(0.95); }
     to { opacity: 1; transform: scale(1); }
 }
-
 @keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.1); color: #FFDF00; }
-    100% { transform: scale(1); }
+    0%, 100% { transform: scale(1); text-shadow: none; }
+    50% { transform: scale(1.1); text-shadow: 0 0 8px var(--color-acento); }
+}
+@keyframes slideInDown {
+    from { transform: translate(-50%, -100px); opacity: 0; }
+    to { transform: translate(-50%, 0); opacity: 1; }
+}
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; transform: translate(-50%, -20px); }
 }
 
 /* --- RESPONSIVIDAD --- */
 @media (max-width: 480px) {
-    body {
-        align-items: flex-start;
-        padding-top: 10px;
-    }
-    #game-header, #stats-container {
-        flex-direction: column;
-        gap: 8px;
-    }
-    #wallet-container {
-        margin-top: 5px;
-    }
+    body { align-items: flex-start; padding-top: 20px; }
+    #game-header { flex-direction: column; gap: 10px; }
 }

@@ -15,6 +15,7 @@
 <body>
 
     <div id="game-container">
+        <div id="notification-container"></div>
         
         <header id="game-header">
             <div id="stats-container" aria-label="Estadísticas del jugador">
@@ -32,6 +33,7 @@
             </div>
             <div id="wallet-container">
                 <button id="connect-wallet-btn" aria-label="Conectar o desconectar wallet de TON">Conectar Wallet</button>
+                <span id="wallet-address"></span>
             </div>
         </header>
         
@@ -42,7 +44,7 @@
 
             <div id="main-actions-area">
                 <a href="airdrop.html" class="side-button" aria-label="Ir a la página de Airdrop">
-                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHySURBVFhH7ZfRStRRHMf/d8xoxhGjs0iCSH8hSZNQJCRELd5KJFtISgQl3gQtlG4UUSGBgqQLECnaBC1IkBCiFkUv0jQz8/v/43DOzD5n5s45M/d9f/dxz/3Odx5g2FrsQJ7ABz5yFRt4eYJ3Xp5w/hbr/Ci/5/4bWMD5LSgGA7gA/sAXXJ0P6d1Bw5o2swM4gA98ZGsS6b2J/oE/uI+f4dY1c4BnFmyA/yHsDXeB29e/AwP4gY+8zQ/Qe535AXzgU/a30XvT+QP8gQ/8yy/Re4v5AfzB3//CJJ1P8Af4g3f5IXq/Of8Ab3h5gnc9wXk/51+g8zH/AP/wbX+C3qfMD+ANX+B4frs3fNeGfMDf/D29bzC/gA/85E1e4H2GfMD3/In3Hy0ATAy/gA/85E1e512WfID3/In3Hy0ATAz/A77gS97kXd5khYf5EXzMl3g/0QLA5MN/gS/4kie5l3cZoWH+BF/yJd4/tACYfPg/8A0/8iRv8i4fMkP8zbP8j/cPLQBMPvwb+Inv+JE3eZcPmSH+5ln+x/uHFgAmt/8D3/A1b/IubzJd/M/X/I33Fy0ATD78C7jBL3mTd3mVH5kh/uZZ/sf7hxYAJjf/A9/wNW/yLm8yXfzP1/yN9xctAEw+/Au4wS95k3d5lR+ZIf7mWf7H+4cWAOYD/gAfGvMDeMOBfMD7/In3Hy0ATAx/A3+AN3iTN3mX6XzIDfEy3/I/3j+0ADB58G/gC37kTd7lQ2aIf/kW/8n7hxYAJhf/g2/4lDd5l3cZIWH+BF/yJd4/tACYfPgfeMMveZM3eZcPmSH+5ln+x/uHFgAmN/8D3/A1b/IubzJd/M/X/I33Fy0ATD78Wz5n/gA/8Jc3eZcPmSH+5ln+x/uHFgAmN/8D3/A1b/IubzJd/M/X/I33Fy0ATD78C7jBL3mTd3mVH5kh/uZZ/sf7hxYA5vP+AcL4zQ/Qe535AdzgX/a30XvT+QP8gQ/8yy/Re4v5AfzB3//CJN1P8Af4g3f5IXq/Of8Ab3h5gnc9wXk/51+g8zH/AP/wbX+C3qfMD+ANX+B4frs3fNeGfMDf/D29bzC/gA/85E1e4H2GfMD3/In3Hy0ATAz/Aw7gGT/yJm/zLm/yWz5khviZb/kf7x9aAJhc/gA/8Jc3eZcPmSH+5ln+x/uHFgAmN/8D3/A1b/IubzJd/M/X/I33Fy0ATD78C7jBL3mTd3mVH5kh/uZZ/sf7hxYA5vP+AcL4zQ/Qe535AdzgX/a30XvT+QP8gQ/8yy/Re4v5AfzB3//CJN1P8Af4g3f5IXq/Of8Ab3h5gnc9wXk/51+g8zH/AP/wbX+C3qfMD+ANX+B4frs3fNeGfMDf/D29bzC/gA/85E1e4H2GfMD3/In3Hy0ATAz/Aw7gGT/yJm/zLm/yWz5khviZb/kf7x9aAJhc/gA/8Jc3eZcPmSH+5ln+x/uHFgAmN/8D3/A1b/IubzJd/M/X/I33Fy0ATD78C7jBL3mTd3mVH5kh/uZZ/sf7hxYAJjf/A9/wNW/yLm8yXfzP1/yN9xctAEw+/Au4wS95k3d5lR+ZIf7mWf7H+4cWAOYz/gE/8G/5nXf5Lcv+D/Azn/M+VvECn8tXAOBPDe4Cfz3rAAAAAElFTkSuQmCC" alt="Airdrop">
+                    <img src="https://raw.githubusercontent.com/MANG369/granja-de-gallinas-tycoon/refs/heads/main/airdrop.png" alt="Airdrop">
                 </a>
 
                 <div id="controls-container">
@@ -52,6 +54,13 @@
                             <div class="button-extra">+<img src="gallina-icon.png" alt="Gallina"> <span id="gallinas-total-display">0</span></div>
                         </button>
                         <p>Costo: <span id="costo-gallina">10</span>💰</p>
+                    </div>
+                    <div class="action">
+                        <button id="mejorar-huevo-btn" aria-label="Aumentar el valor de los huevos">
+                            Mejorar Huevo
+                            <div class="button-extra">+<img src="huevo-icon.png" alt="Huevo"> <span id="huevo-level-display">0</span></div>
+                        </button>
+                        <p>Costo: <span id="costo-mejora-huevo">250</span>💰 (+1💰/huevo)</p>
                     </div>
                     <div class="action">
                         <button id="mejorar-corral-btn" aria-label="Mejorar capacidad del corral">
@@ -70,7 +79,7 @@
                 </div>
 
                 <a href="ads.html" class="side-button" aria-label="Ir a la página de Anuncios">
-                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAC0SURBVFhH7dfBCcAwEATR/p/dJ9hBfIIbDOIyEREoUdn5J3s4b+CyrnF2L8ET7+CP8Af8Ae6w7wkW30AC34AL8Af4AzyZ3bEBF/AF+AO8AF/AE/gDO3AF3oAn8AfcgSfwB3AFfsAZ+ANcgT/gDpwBX+AN/AGuQJ/AFbgD0j8An8AZuAOswBL4A7wBX4AL8Ab2gCfwB3AF3oAncAd+wB3YgSfwBbjAd/gL/MkJ/P4D/ADeYZ2pWXkAAAAASUVORK5CYII=" alt="Ads">
+                    <img src="https://raw.githubusercontent.com/MANG369/granja-de-gallinas-tycoon/refs/heads/main/ads.png" alt="Ads">
                 </a>
             </div>
         </main>
