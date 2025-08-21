@@ -1,4 +1,3 @@
-/* --- VARIABLES DE TEMA --- */
 :root {
     --color-fondo: #87CEEB;
     --color-container: #F5F5F5;
@@ -13,7 +12,6 @@
     --font-principal: 'Press Start 2P', cursive;
 }
 
-/* --- ESTILO BASE --- */
 body {
     background-color: var(--color-fondo);
     font-family: var(--font-principal);
@@ -38,4 +36,179 @@ body {
     overflow: hidden;
 }
 
-/* ... (El resto de los estilos se mantienen exactamente igual que en la versión anterior) ... */
+#game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color-interior);
+    padding: 8px;
+    border-radius: 6px;
+    margin-bottom: 12px;
+    border: 2px solid var(--color-borde);
+}
+
+#stats-container {
+    display: flex;
+    gap: 10px; /* Reducido el gap */
+    align-items: center;
+}
+
+.stat {
+    display: flex;
+    align-items: center;
+    font-size: 12px; /* Reducido el tamaño de la fuente */
+}
+
+.stat img {
+    width: 14px; /* Reducido el tamaño del icono */
+    height: 14px; /* Reducido el tamaño del icono */
+    margin-right: 4px; /* Reducido el margen */
+    image-rendering: pixelated;
+}
+
+#info-and-logo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0; /* Reducido el margen */
+}
+
+.info-box {
+    background: var(--color-interior);
+    border: 2px solid var(--color-borde);
+    border-radius: 5px;
+    padding: 6px; /* Reducido el padding */
+    width: 70px; /* Reducido el ancho */
+    height: 50px; /* Reducido la altura */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 9px; /* Reducido el tamaño de la fuente */
+}
+.info-box-title {
+    font-size: 7px; /* Reducido el tamaño de la fuente */
+    margin-bottom: 3px; /* Reducido el margen */
+    color: var(--color-texto-secundario);
+}
+
+#logo-container img {
+    width: 100%;
+    max-width: 100px; /* Reducido el tamaño máximo del logo */
+    display: block;
+}
+
+#controls-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 6px; /* Reducido el gap */
+    background: var(--color-interior);
+    padding: 10px 8px; /* Reducido el padding */
+    border-radius: 5px;
+    border: 2px solid var(--color-borde);
+}
+
+.action p {
+    margin: 3px 0 0 0; /* Reducido el margen */
+    font-size: 9px; /* Reducido el tamaño de la fuente */
+    color: var(--color-texto-secundario);
+}
+
+button {
+    font-family: var(--font-principal);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.1s ease;
+    font-size: 9px; /* Reducido el tamaño de la fuente */
+}
+
+.action button {
+    background-color: var(--color-acento);
+    border: 2px solid var(--color-acento-sombra);
+    padding: 8px; /* Reducido el padding */
+    color: var(--color-texto-principal);
+    box-shadow: 0 3px 0 var(--color-acento-sombra); /* Reducida la sombra */
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.action button:disabled {
+    background-color: #BDBDBD;
+    cursor: not-allowed;
+    box-shadow: 0 3px 0 #9E9E9E; /* Reducida la sombra */
+    color: #757575;
+}
+
+.button-extra {
+    display: flex;
+    align-items: center;
+    background: rgba(0,0,0,0.08);
+    padding: 2px 4px; /* Reducido el padding */
+    border-radius: 3px;
+}
+.button-extra img {
+    width: 10px; /* Reducido el tamaño del icono */
+    height: 10px; /* Reducido el tamaño del icono */
+    margin: 0 2px; /* Reducido el margen */
+    image-rendering: pixelated;
+}
+
+#secondary-actions-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Reducido el gap */
+    margin-top: 10px; /* Reducido el margen */
+}
+
+.secondary-button {
+    background-color: #fff;
+    border: 2px solid var(--color-borde);
+    border-radius: 6px; /* Reducido el radio del borde */
+    width: 100px; /* Reducido el ancho */
+    padding: 6px; /* Reducido el padding */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: var(--color-texto-principal);
+    font-size: 10px; /* Reducido el tamaño de la fuente */
+    transition: all 0.2s ease;
+}
+.secondary-button:hover {
+    transform: translateY(-2px); /* Reducido el desplazamiento al pasar el ratón */
+    box-shadow: 0 3px 6px rgba(0,0,0,0.2); /* Reducida la sombra al pasar el ratón */
+}
+.secondary-button img {
+    width: 18px; /* Reducido el tamaño del icono */
+    height: 18px; /* Reducido el tamaño del icono */
+    margin-bottom: 3px; /* Reducido el margen */
+}
+
+/* --- MODAL OFFLINE --- */
+#offline-modal {
+    /* ... (sin cambios en la estructura básica del modal) ... */
+}
+
+.modal-content {
+    /* ... (sin cambios importantes, podrías ajustar fuentes si es necesario) ... */
+}
+
+#close-modal-btn {
+    /* ... (sin cambios importantes) ... */
+}
+
+/* --- NOTIFICACIONES --- */
+.notification-container {
+    /* ... (sin cambios importantes) ... */
+}
+
+.notification {
+    /* ... (sin cambios importantes) ... */
+}
+
+.notification.error {
+    /* ... (sin cambios importantes) ... */
+}
